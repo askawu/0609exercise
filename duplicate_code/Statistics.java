@@ -4,23 +4,19 @@ public class Statistics
 {
     public double calculateDifferenceOfAverage(double[] array1, double[] array2)
     {
-        double sum1 = 0;
-        double average1;
 
-        for (double element : array1) {
-            sum1 += element;
-        }
-        average1 = sum1 / array1.length;
-
-        double sum2 = 0;
-        double average2;
-
-        for (double element : array2) {
-            sum2 += element;
-        }
-        average2 = sum2 / array2.length;
-
+        double average1 = through(double[] array1);
+        double average2 = through(double[] array2);
         return Math.abs(average1 - average2);
+    }
+    public double through (double[] array)
+    {
+        sum=0;
+        for (double element : array) {
+            sum += element;
+        }
+        average=(sum / array.length)
+        return  average
     }
 
     public double calculateSampleVariance(double[] elements)
