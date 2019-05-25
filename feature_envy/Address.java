@@ -1,53 +1,22 @@
 package com.directi.training.codesmells.featureenvy;
 
-public class Address
+public class Customer
 {
+    private String _name;
+    private Address _currentAddress;
 
-    private String _addressLine1;
-    private String _addressLine2;
-    private String _city;
-    private String _state;
-    private String _country;
-    private String _postalCode;
-
-    public Address(String addressLine1, String addressLine2, String city, String state,
-                   String country, String postalCode)
+    public Customer(String name, Address address)
     {
-        _addressLine1 = addressLine1;
-        _addressLine2 = addressLine2;
-        _city = city;
-        _state = state;
-        _country = country;
-        _postalCode = postalCode;
+        _name = name;
+        _currentAddress = address;
     }
 
-    public String getAddressLine1()
+    public void printAddress()
     {
-        return _addressLine1;
+        System.out.println(
+            _currentAddress.getFullAddress();
     }
 
-    public String getAddressLine2()
-    {
-        return _addressLine2;
-    }
+    //other methods related to customer class.....
 
-    public String getCity()
-    {
-        return _city;
-    }
-
-    public String getState()
-    {
-        return _state;
-    }
-
-    public String getCountry()
-    {
-        return _country;
-    }
-
-    public String getPostalCode()
-    {
-        return _postalCode;
-    }
 }
