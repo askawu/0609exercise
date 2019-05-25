@@ -17,6 +17,12 @@ public class LoginCommand
         _username = username;
         _password = password;
     }
+    
+    public void writeOutputStream(string data,OutputStream outputStream)
+    {
+        outputStream.write(data.getBytes());
+        outputStream.write(0x00);
+    }
 
     public void write(OutputStream outputStream) throws Exception
     {
@@ -25,10 +31,8 @@ public class LoginCommand
         outputStream.write((header.length + SIZE_LENGTH + CMD_BYTE_LENGTH + footer.length +
                             _username.getBytes().length + 1 + _password.getBytes().length + 1));
         outputStream.write(commandChar);
-        outputStream.write(_username.getBytes());
-        outputStream.write(0x00);
-        outputStream.write(_password.getBytes());
-        outputStream.write(0x00);
+        writeOutputStream(_username)
+        writeOutputStream(_password)
 
         outputStream.write(footer);
 
