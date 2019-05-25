@@ -24,6 +24,12 @@ public class AddEmployeeCmd
         _state = state;
         _annualSalary = annualSalary;
     }
+    
+    public void writeOutputStream(string data,OutputStream outputStream)
+    {
+        outputStream.write(data.getBytes());
+        outputStream.write(0x00);
+    }
 
     public void write(OutputStream outputStream) throws Exception
     {
@@ -35,16 +41,12 @@ public class AddEmployeeCmd
                             _annualSalary.getBytes().length + 1));
         outputStream.write(commandChar);
 
-        outputStream.write(_name.getBytes());
-        outputStream.write(0x00);
-        outputStream.write(_address.getBytes());
-        outputStream.write(0x00);
-        outputStream.write(_city.getBytes());
-        outputStream.write(0x00);
-        outputStream.write(_state.getBytes());
-        outputStream.write(0x00);
-        outputStream.write(_annualSalary.getBytes());
-        outputStream.write(0x00);
+        writeOutputStream(_name);
+        writeOutputStream(_address);
+        writeOutputStream(_city);
+        writeOutputStream(_state);
+        writeOutputStream(_annualSalary);
+
         outputStream.write(footer);
     }
 
