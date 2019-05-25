@@ -7,13 +7,15 @@ public class Employee
     private final String _officeNumber;
     private final String _officeExtensionNumber;
 
-    public Employee(String name, String officeAreaCode, String officeNumber,
-                    String officeExtensionNumber)
+    public Employee(String name, String officeAreaCode)
     {
         _name = name;
         _officeAreaCode = officeAreaCode;
-        _officeNumber = officeNumber;
-        _officeExtensionNumber = officeExtensionNumber;
+    }
+    public phone_number(String officeNumber,String officeExtensionNumber) {
+    	_officeNumber = officeNumber;
+    	_officeExtensionNumber = officeExtensionNumber;
+    	
     }
 
     public String getTelephoneNumber()
