@@ -1,36 +1,30 @@
 package com.directi.training.codesmells.duplicatecode.acrossclasses;
 
+import duplicate_code.acrossclasses.AbstractWriter;
 import java.io.OutputStream;
 
-public class LoginCommand
-{
-    protected static final byte[] header = {(byte) 0xde, (byte) 0xad};
-    protected static final byte[] commandChar = {0x01};
-    protected static final byte[] footer = {(byte) 0xbe, (byte) 0xef};
-    protected static final int SIZE_LENGTH = 1;
-    protected static final int CMD_BYTE_LENGTH = 1;
+public class LoginCommand extends AbstractWriter {
+
     private String _username;
     private String _password;
 
-    public LoginCommand(String username, String password)
-    {
+    public LoginCommand(String username, String password) {
         _username = username;
         _password = password;
     }
 
-    public void write(OutputStream outputStream) throws Exception
-    {
+    @Override
+    public void writeLength(OutputStream outputStream) throws Exception {
+        outputStream.write(getUniversalLength() + _username.getBytes().length + 1 + _password.getBytes().length + 1);
+    }
+
+    @Override
+    public void write(OutputStream outputStream) throws Exception {
         outputStream.write(header);
-        // calculate and write content size
-        outputStream.write((header.length + SIZE_LENGTH + CMD_BYTE_LENGTH + footer.length +
-                            _username.getBytes().length + 1 + _password.getBytes().length + 1));
+        writeLength(outputStream);
         outputStream.write(commandChar);
-        outputStream.write(_username.getBytes());
-        outputStream.write(0x00);
-        outputStream.write(_password.getBytes());
-        outputStream.write(0x00);
-
+        writeValueEnd(outputStream, _username.getBytes());
+        writeValueEnd(outputStream, _password.getBytes());
         outputStream.write(footer);
-
     }
 }
