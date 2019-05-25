@@ -1,12 +1,12 @@
 package com.directi.training.codesmells.duplicatecode.acrossclasses;
 
-import duplicate_code.acrossclasses.AbstractWriter;
+import java.io.IOException;
 import java.io.OutputStream;
 
 public class LoginCommand extends AbstractWriter {
 
-    private String _username;
-    private String _password;
+    private final String _username;
+    private final String _password;
 
     public LoginCommand(String username, String password) {
         _username = username;
@@ -14,17 +14,14 @@ public class LoginCommand extends AbstractWriter {
     }
 
     @Override
-    public void writeLength(OutputStream outputStream) throws Exception {
-        outputStream.write(getUniversalLength() + _username.getBytes().length + 1 + _password.getBytes().length + 1);
+    public void writeLength(OutputStream outputStream) throws IOException {
+        outputStream.write(getTotalLength(_username.getBytes(), _password.getBytes()));
     }
 
     @Override
-    public void write(OutputStream outputStream) throws Exception {
-        outputStream.write(header);
-        writeLength(outputStream);
-        outputStream.write(commandChar);
-        writeValueEnd(outputStream, _username.getBytes());
-        writeValueEnd(outputStream, _password.getBytes());
-        outputStream.write(footer);
+    public void write(OutputStream outputStream) throws IOException {
+        writeRequestHeader(outputStream);
+        writeBody(outputStream, _username.getBytes(), _password.getBytes());
+        writeFooter(outputStream);
     }
 }

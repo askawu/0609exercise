@@ -1,5 +1,6 @@
 package com.directi.training.codesmells.duplicatecode.acrossclasses;
 
+import java.io.IOException;
 import java.io.OutputStream;
 
 public interface Command {
@@ -10,7 +11,7 @@ public interface Command {
     int SIZE_LENGTH = 1;
     int CMD_BYTE_LENGTH = 1;
 
-    void writeLength(OutputStream outputStream) throws Exception;
+    void writeLength(OutputStream outputStream) throws IOException;
 
-    void write(OutputStream outputStream) throws Exception;
+    void write(OutputStream outputStream) throws IOException;
 }

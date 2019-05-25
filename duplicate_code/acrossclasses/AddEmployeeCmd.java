@@ -1,15 +1,15 @@
 package com.directi.training.codesmells.duplicatecode.acrossclasses;
 
-import duplicate_code.acrossclasses.AbstractWriter;
+import java.io.IOException;
 import java.io.OutputStream;
 
 public class AddEmployeeCmd extends AbstractWriter {
 
-    private String _name;
-    private String _address;
-    private String _city;
-    private String _state;
-    private String _annualSalary;
+    private final String _name;
+    private final String _address;
+    private final String _city;
+    private final String _state;
+    private final String _annualSalary;
 
     public AddEmployeeCmd(String name, String address, String city, String state, String annualSalary) {
         _name = name;
@@ -20,20 +20,14 @@ public class AddEmployeeCmd extends AbstractWriter {
     }
 
     @Override
-    public void writeLength(OutputStream outputStream) throws Exception {
-        outputStream.write(getUniversalLength() + _name.getBytes().length + 1 + _address.getBytes().length + 1 + _city.getBytes().length + 1 + _state.getBytes().length + 1 + _annualSalary.getBytes().length + 1);
+    public void writeLength(OutputStream outputStream) throws IOException {
+        outputStream.write(getTotalLength(_name.getBytes(), _address.getBytes(), _city.getBytes(), _state.getBytes(), _annualSalary.getBytes()));
     }
 
     @Override
-    public void write(OutputStream outputStream) throws Exception {
-        outputStream.write(header);
-        writeLength(outputStream);
-        outputStream.write(commandChar);
-        writeValueEnd(outputStream, _name.getBytes());
-        writeValueEnd(outputStream, _address.getBytes());
-        writeValueEnd(outputStream, _city.getBytes());
-        writeValueEnd(outputStream, _state.getBytes());
-        writeValueEnd(outputStream, _annualSalary.getBytes());
-        outputStream.write(footer);
+    public void write(OutputStream outputStream) throws IOException {
+        writeRequestHeader(outputStream);
+        writeBody(outputStream, _name.getBytes(), _address.getBytes(), _city.getBytes(), _state.getBytes(), _annualSalary.getBytes());
+        writeFooter(outputStream);
     }
 }

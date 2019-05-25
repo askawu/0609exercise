@@ -1,6 +1,5 @@
-package duplicate_code.acrossclasses;
+package com.directi.training.codesmells.duplicatecode.acrossclasses;
 
-import com.directi.training.codesmells.duplicatecode.acrossclasses.Command;
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -27,5 +26,15 @@ public abstract class AbstractWriter implements Command {
         for (int i = 0; i < data.length; ++i) {
             writeValueEnd(outputStream, data[i]);
         }
+    }
+
+    public void writeRequestHeader(OutputStream outputStream) throws IOException {
+        outputStream.write(header);
+        writeLength(outputStream);
+        outputStream.write(commandChar);
+    }
+
+    public void writeFooter(OutputStream outputStream) throws IOException {
+        outputStream.write(footer);
     }
 }
