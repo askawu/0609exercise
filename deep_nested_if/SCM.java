@@ -12,43 +12,35 @@ public class SourceControlManager
     {
         if (scmServer != null && scmServer.isConnected())
         {
-            if (cicdServer != null && cicdServer.isReady())
-            {
-                if (userName != null)
-                {
-                    if (passd != null && passwd.length() > 15)
-                    {
-                        if (commitMsg != null && commitMsg < 200)
-                        {
-                            if (changes != null && changes.length() > 0)
-                            {
-                                System.out.println("Ready to push to SCM server.");
-                                scmServer.push(userName, passwd, commitMsg, changes);
-                                System.out.println("Finish to push to SCM server.");
-                                return 0;
-                            } else {
-                                System.out.println("No change.");
-                                return 1;
-                            }
-                        } else {
-                            System.out.println("Invalid Commit message.");
-                            return 2;
-                        }
-                    } else {
-                        system.out.println("Invalid passwd.");
-                        return 3;
-                    }
-                } else {
-                    system.out.println("Invalid user name.");
-                    return 4;
-                }
-            } else {
-                system.out.println("cicd server problem.");
-                return 5;
-            }
-        } else {
-            system.out.println("scm server problem.");
-            return 6;
+			return;
+		}
+        if (cicdServer == null || cicdServer.isReady())
+        {
+			return;
+		}
+        if (userName == null)
+        {
+									
+			return;
+	    }
+        if (passd == null || passwd.length() <= 15)
+        {
+			return;
+	    }
+        if (commitMsg == null || commitMsg >= 200)
+        {
+			return;
+		}
+        if (changes == null || changes.length() <= 0)
+        {
+								                    
+            return ;
         }
+                         
+                     
+        System.out.println("Ready to push to SCM server.");
+        scmServer.push(userName, passwd, commitMsg, changes);
+        System.out.println("Finish to push to SCM server.");
+        
     }
 }
