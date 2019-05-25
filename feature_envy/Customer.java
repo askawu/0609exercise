@@ -10,15 +10,4 @@ public class Customer
         _name = name;
         _currentAddress = address;
     }
-
-    public void printAddress()
-    {
-        System.out.println(
-            _currentAddress.getAddressLine1() + "\n" + _currentAddress.getAddressLine2() + "\n" +
-            _currentAddress.getCity() + ", " + _currentAddress.getState() + "\n" +
-            _currentAddress.getPostalCode());
-    }
-
-    //other methods related to customer class.....
-
 }
