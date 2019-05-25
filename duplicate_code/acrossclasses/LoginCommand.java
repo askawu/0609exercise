@@ -15,6 +15,6 @@ public class LoginCommand extends Command
 
     public void write(OutputStream outputStream) throws Exception
     {
-        super().write(_username, _password);
+        super().write(outputStream, _username, _password);
     }
 }
