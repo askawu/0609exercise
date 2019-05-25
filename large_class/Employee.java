@@ -7,22 +7,29 @@ public class Employee
     private final String _officeNumber;
     private final String _officeExtensionNumber;
 
-    public Employee(String name, String officeAreaCode, String officeNumber,
-                    String officeExtensionNumber)
+    public Employee(String name,Telephone MyTelephone)
     {
         _name = name;
-        _officeAreaCode = officeAreaCode;
-        _officeNumber = officeNumber;
-        _officeExtensionNumber = officeExtensionNumber;
+      
     }
-
+	
     public String getTelephoneNumber()
     {
-        return "(" + _officeAreaCode + ") " + _officeNumber + "-" + _officeExtensionNumber;
+        return MyTelephone.TelephoneNumber()
     }
 
     public String getName()
     {
         return _name;
+    }
+}
+public class Telephone
+{
+	private final String _officeAreaCode;
+    private final String _officeNumber;
+    private final String _officeExtensionNumber;
+	public String TelephoneNumber()
+    {
+        return "(" + _officeAreaCode + ") " + _officeNumber + "-" + _officeExtensionNumber;
     }
 }
