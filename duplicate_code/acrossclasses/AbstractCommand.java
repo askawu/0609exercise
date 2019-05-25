@@ -3,7 +3,7 @@ package com.directi.training.codesmells.duplicatecode.acrossclasses;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public abstract class AbstractWriter implements Command {
+public abstract class AbstractCommand implements Command {
 
     public void writeValueEnd(OutputStream outputStream, byte[] data) throws IOException {
         outputStream.write(data);

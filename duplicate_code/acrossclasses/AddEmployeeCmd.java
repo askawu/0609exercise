@@ -3,7 +3,7 @@ package com.directi.training.codesmells.duplicatecode.acrossclasses;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class AddEmployeeCmd extends AbstractWriter {
+public class AddEmployeeCmd extends AbstractCommand {
 
     private final String _name;
     private final String _address;

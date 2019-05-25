@@ -3,7 +3,7 @@ package com.directi.training.codesmells.duplicatecode.acrossclasses;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class LoginCommand extends AbstractWriter {
+public class LoginCommand extends AbstractCommand {
 
     private final String _username;
     private final String _password;
