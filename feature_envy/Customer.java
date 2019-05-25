@@ -9,4 +9,8 @@ public class Customer {
         _name = name;
         _currentAddress = address;
     }
+
+    public void printAddress() {
+        _currentAddress.printAddress();
+    }
 }
