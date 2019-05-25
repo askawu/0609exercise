@@ -50,4 +50,12 @@ public class Address
     {
         return _postalCode;
     }
+	
+	 public void printAddress()
+    {
+        System.out.println(
+            _currentAddress.getAddressLine1() + "\n" + _currentAddress.getAddressLine2() + "\n" +
+            _currentAddress.getCity() + ", " + _currentAddress.getState() + "\n" +
+            _currentAddress.getPostalCode());
+    }
 }
