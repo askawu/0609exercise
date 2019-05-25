@@ -50,4 +50,11 @@ public class Address
     {
         return _postalCode;
     }
+
+    public String getFullAddress()
+    {
+        return _addressLine1 + "\n" + _addressLine2 + "\n" +
+        _city + ", " + _state + "\n" +
+        _postalCode;
+    }
 }
