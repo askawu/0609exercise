@@ -26,3 +26,11 @@ public class Employee
         return _name;
     }
 }
+
+
+
+public String getTelephoneNumber(String officeAreaCode, String officeNumber, String officeExtensionNumber)
+   {
+       return "(" + officeAreaCode + ") " + officeNumber + "-" + officeExtensionNumber;
+   }
+
