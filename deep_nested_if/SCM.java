@@ -14,23 +14,23 @@ public class SourceControlManager
         {
 			System.out.println("No change.");
             return 1;
-            if (cicdServer == null || !cicdServer.isReady())
-            {
+        else if (cicdServer == null || !cicdServer.isReady())
+        {
 				System.out.println("Invalid Commit message.");
                 return 2;
-                if (userName == null)
+                else if (userName == null)
                 {
 					system.out.println("Invalid passwd.");
                     return 3;
-                    if (passd == null || passwd.length() <= 15)
+                    else if (passd == null || passwd.length() <= 15)
                     {
 						system.out.println("Invalid user name.");
 						return 4;
-                        if (commitMsg == null || commitMsg >= 200)
+                        else if (commitMsg == null || commitMsg >= 200)
                         {
 							system.out.println("cicd server problem.");
 							return 5;
-                            if (changes == null || changes.length() <= 0)
+                            else if (changes == null || changes.length() <= 0)
                             {
 								system.out.println("scm server problem.");
 								return 6;
