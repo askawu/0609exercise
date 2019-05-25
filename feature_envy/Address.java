@@ -9,6 +9,7 @@ public class Address
     private String _state;
     private String _country;
     private String _postalCode;
+    private String _Address;
 
     public Address(String addressLine1, String addressLine2, String city, String state,
                    String country, String postalCode)
@@ -19,6 +20,9 @@ public class Address
         _state = state;
         _country = country;
         _postalCode = postalCode;
+        _Address = _addressLine1 + "\n" + _addressLine2 + "\n" +
+           _city + ", " + _state + "\n" +
+            _postalCode;
     }
 
     public String getAddressLine1()
