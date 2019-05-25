@@ -21,33 +21,33 @@ public class Address
         _postalCode = postalCode;
     }
 
-    public String getAddressLine1()
+    public String printAddressLine1()
     {
-        return _addressLine1;
+        System.out.println(_addressLine1);
     }
 
-    public String getAddressLine2()
+    public String printAddressLine2()
     {
-        return _addressLine2;
+        System.out.println(_addressLine2);
     }
 
-    public String getCity()
+    public String printCity()
     {
-        return _city;
+        System.out.println(_city);
     }
 
-    public String getState()
+    public String printState()
     {
-        return _state;
+        System.out.println(_state);
     }
 
-    public String getCountry()
+    public String printCountry()
     {
-        return _country;
+        System.out.println(_country);
     }
 
-    public String getPostalCode()
+    public String printPostalCode()
     {
-        return _postalCode;
+        System.out.println(_postalCode);
     }
 }
