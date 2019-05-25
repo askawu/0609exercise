@@ -3,26 +3,31 @@ package com.directi.training.codesmells.largeclass;
 public class Employee
 {
     private final String _name;
-    private final String _officeAreaCode;
-    private final String _officeNumber;
-    private final String _officeExtensionNumber;
+    private Office _office;
 
-    public Employee(String name, String officeAreaCode, String officeNumber,
-                    String officeExtensionNumber)
+    public Employee(String name)
     {
         _name = name;
-        _officeAreaCode = officeAreaCode;
-        _officeNumber = officeNumber;
-        _officeExtensionNumber = officeExtensionNumber;
+        _office = new Office();
     }
 
     public String getTelephoneNumber()
     {
-        return "(" + _officeAreaCode + ") " + _officeNumber + "-" + _officeExtensionNumber;
+        return _office.getTelephoneNumber();
     }
 
     public String getName()
     {
         return _name;
+    }
+
+    public void setOffice(Office office) 
+    {
+        _office = office;
+    }
+
+    public Office getOffice()
+    {
+        return _office;
     }
 }
