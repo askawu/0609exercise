@@ -14,4 +14,18 @@ public abstract class AbstractWriter implements Command {
     public int getUniversalLength() {
         return header.length + SIZE_LENGTH + CMD_BYTE_LENGTH + footer.length;
     }
+
+    public int getTotalLength(byte[]... data) {
+        int dataLength = 0;
+        for (int i = 0; i < data.length; ++i) {
+            dataLength += data[i].length + 1;
+        }
+        return getUniversalLength() + dataLength;
+    }
+
+    public void writeBody(OutputStream outputStream, byte[]... data) throws IOException {
+        for (int i = 0; i < data.length; ++i) {
+            writeValueEnd(outputStream, data[i]);
+        }
+    }
 }
