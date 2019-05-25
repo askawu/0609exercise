@@ -23,6 +23,9 @@ public class Statistics
         return Math.abs(average1 - average2);
     }
 
+	
+	
+
     public double calculateSampleVariance(double[] elements)
     {
         double sum1 = 0;
