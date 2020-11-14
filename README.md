@@ -1,1 +1,4 @@
-# 0609exercise
+# 1114exercise
+
+* duplicate_code
+* large_class
