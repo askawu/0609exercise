@@ -1,24 +1,30 @@
 package com.directi.training.codesmells.largeclass;
 
+class PhoneNumber {
+    private String officeAreaCode;
+    private String officeNumber;
+    private String officeExtensionNumber;
+    
+    public String toString()
+    {
+        return "(" + officeAreaCode + ") " + officeNumber + "-" + officeExtensionNumber;
+    }
+}
+
 public class Employee
 {
     private final String _name;
-    private final String _officeAreaCode;
-    private final String _officeNumber;
-    private final String _officeExtensionNumber;
+    private PhoneNumber _phone;
 
-    public Employee(String name, String officeAreaCode, String officeNumber,
-                    String officeExtensionNumber)
+    public Employee(String name, PhoneNumber phone)
     {
         _name = name;
-        _officeAreaCode = officeAreaCode;
-        _officeNumber = officeNumber;
-        _officeExtensionNumber = officeExtensionNumber;
+        _phone = phone;
     }
 
     public String getTelephoneNumber()
     {
-        return "(" + _officeAreaCode + ") " + _officeNumber + "-" + _officeExtensionNumber;
+        return _phone.toString();
     }
 
     public String getName()
