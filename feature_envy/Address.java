@@ -31,6 +31,15 @@ public class Address
         return _addressLine2;
     }
 
+    public String getAddress() 
+    {
+        return getAddressLine1() + "\n" + 
+               getAddressLine2() + "\n" +
+               getCity() + ", " +
+               getState() + "\n" +
+               getPostalCode();
+    }
+
     public String getCity()
     {
         return _city;
